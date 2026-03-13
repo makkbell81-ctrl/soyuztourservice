@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Наши туры — Союзтур Сервис</title>
+    <link href="https://fonts.googleapis.com" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #c70e13;
+            --rose-gold: #e5b3a3;
+            --rose-gold-light: #f5d6cb;
+            --bg-glass: rgba(255, 255, 255, 0.12);
+            --border-glass: rgba(255, 255, 255, 0.25);
+            --dark-brown: #4a342e;
+        }
+
+        html, body { 
+            margin: 0; padding: 0; min-height: 100vh; 
+            font-family: 'Montserrat', sans-serif; 
+            scroll-behavior: smooth; 
+            overflow-x: hidden; 
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://img.freepik.com/free-photo/highland-vegetation-modest-summer-unusually-beautiful-colors-blooms-autumn-before-cold-weather-blueberries-bright-red-coniferous-forest-green-orange-buk-mountains-sinie-fantastic-charm_146671-19033.jpg') 
+                        no-repeat center center fixed;
+            background-size: cover; 
+            color: white; 
+            display: flex; 
+            flex-direction: column;
+        }
+
+        /* ШАПКА */
+        .header-top {
+            background: rgba(245, 214, 203, 0.96); 
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            padding: 12px 4%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            position: sticky; top: 0; z-index: 1000; 
+            border-bottom: 2px solid #d49a89;
+            box-shadow: 0 4px 30px rgba(229, 179, 163, 0.3);
+        }
+
+        .logo-section { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo { width: 65px; height: auto; }
+        .brand-info h1 { margin: 0; font-size: 16px; color: var(--primary-red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
+        .brand-info p { margin: 0; font-size: 9px; color: #4a342e; font-weight: 700; text-transform: uppercase; }
+
+        .badge-group {
+            display: flex; align-items: center; gap: 12px; 
+            background: rgba(255, 255, 255, 0.6);
+            padding: 6px 15px; border-radius: 12px; 
+            border: 1px solid rgba(212, 154, 137, 0.4);
+        }
+        .badge-logo-tkp { height: 28px; }
+        .badge-logo-gerb { height: 26px; }
+        .badge-divider { width: 1px; height: 25px; background: #d49a89; opacity: 0.5; }
+        .gerb-info span { font-size: 8px; color: var(--dark-brown); font-weight: 700; text-transform: uppercase; line-height: 1.1; display: block; text-align: left; }
+
+        /* КОНТЕНТ */
+        .container { 
+            max-width: 1100px; 
+            margin: 40px auto 60px; 
+            padding: 0 20px; 
+            flex: 1; 
+        }
+
+        /* Кнопка "На главную" */
+        .back-to-main {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--rose-gold);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 30px;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .back-to-main:hover { color: #fff; transform: translateX(-5px); }
+
+        .page-title { text-align: center; margin-bottom: 60px; }
+        .page-title h2 { font-size: clamp(1.8rem, 5vw, 2.8rem); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 15px; font-weight: 700; }
+        .page-title .divider { width: 100px; height: 4px; background: var(--rose-gold); margin: 0 auto; border-radius: 2px; }
+
+        /* СЕТКА ТУРОВ */
+        .tours-grid { display: flex; flex-direction: column; gap: 50px; }
+
+        .tour-card {
+            display: flex;
+            background: var(--bg-glass); 
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--border-glass);
+            border-radius: 30px; 
+            overflow: hidden; 
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            min-height: 350px;
+            opacity: 0; transform: translateY(30px);
+            animation: fadeInCard 0.8s forwards;
+        }
+
+        @keyframes fadeInCard { to { opacity: 1; transform: translateY(0); } }
+        .tour-card:hover { 
+            transform: translateY(-10px); 
+            border-color: var(--rose-gold); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .tour-image-box { width: 45%; position: relative; overflow: hidden; }
+        .tour-image-box img { 
+            width: 100%; height: 100%; 
+            object-fit: cover; 
+            transform: scale(1.18); 
+            transition: 0.6s ease;
+        }
+        .tour-card:hover .tour-image-box img { transform: scale(1.25); }
+
+        .tour-price { 
+            position: absolute; top: 20px; left: 20px; z-index: 2;
+            background: var(--primary-red); padding: 8px 20px; 
+            border-radius: 50px; font-weight: 700; font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .tour-content { width: 55%; padding: 50px; display: flex; flex-direction: column; justify-content: center; }
+        .tour-content h3 { font-size: clamp(1.4rem, 3vw, 2.2rem); margin: 0 0 15px 0; color: var(--rose-gold-light); }
+        .tour-content p { font-size: 1.05rem; line-height: 1.6; opacity: 0.9; margin-bottom: 30px; }
+
+        .details-btn {
+            display: inline-block; width: fit-content;
+            background: var(--rose-gold); color: var(--dark-brown);
+            text-decoration: none; padding: 14px 35px; 
+            border-radius: 12px; font-weight: 700; text-transform: uppercase; 
+            font-size: 0.85rem; transition: 0.3s;
+            letter-spacing: 1px;
+        }
+        .details-btn:hover { background: #fff; box-shadow: 0 0 20px rgba(255,255,255,0.4); }
+
+        /* ФУТЕР */
+        .footer-minimal {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--border-glass);
+            padding: 40px 20px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1100px; margin: 0 auto;
+            display: flex; justify-content: center; align-items: center;
+            gap: 40px; flex-wrap: wrap;
+        }
+
+        .footer-link { 
+            color: white; text-decoration: none; font-size: 1rem; 
+            font-weight: 500; transition: 0.3s; display: flex;
+            align-items: center; gap: 10px;
+        }
+        .footer-link:hover { color: var(--rose-gold); }
+
+        .copyright { 
+            padding: 20px; font-size: 0.7rem; background: rgba(0,0,0,0.9); 
+            color: var(--rose-gold-light); text-transform: uppercase;
+            letter-spacing: 2px; text-align: center; opacity: 0.6;
+        }
+
+        .image-source { text-align: center; padding: 8px; font-size: 0.65rem; opacity: 0.4; color: white; background: rgba(0,0,0,0.9); }
+        .image-source a { color: white; }
+
+        @media (max-width: 900px) {
+            .tour-card { flex-direction: column; min-height: auto; }
+            .tour-image-box { width: 100%; height: 250px; }
+            .tour-content { width: 100%; padding: 30px; text-align: center; align-items: center; }
+            .footer-container { flex-direction: column; gap: 15px; }
+            .header-right { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-top">
+        <a href="index.html" class="logo-section">
+            <img src="logo 110.png" alt="Союзтур" class="logo">
+            <div class="brand-info">
+                <h1>СОЮЗТУР СЕРВИС</h1>
+                <p>Туристическое агентство</p>
+            </div>
+        </a>
+        <div class="header-right">
+            <div class="badge-group">
+                <img src="Logo_TKP.png" alt="ТКП" class="badge-logo-tkp">
+                <div class="badge-divider"></div>
+                <div class="gerb-info">
+                    <img src="Min-econom-develop-russia-emblem.png" alt="Герб" class="badge-logo-gerb">
+                    <span>мы в реестре<br>туроператоров</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Кнопка возврата -->
+        <a href="index.html" class="back-to-main">
+            <svg style="width:18px; fill:currentColor" viewBox="0 0 24 24">
+                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+            </svg>
+            На главную
+        </a>
+
+        <div class="page-title">
+            <h2>Экскурсии по Москве</h2>
+            <div class="divider"></div>
+        </div>
+
+        <div class="tours-grid">
+            <div class="tour-card">
+                <div class="tour-image-box">
+                    <img src="C:\Users\makko\Documents\project Souztur ver2\ef01d5161e0c11f1aecde675ad182181.jpg" alt="Патриаршие">
+                    <div class="tour-price">от 2 800 ₽</div>
+                </div>
+                <div class="tour-content">
+                    <h3>Магия Патриарших</h3>
+                    <p>Мистика Булгакова и уют старой Москвы. Исследуйте легендарные переулки, где реальность переплетается с вымыслом.</p>
+                    <a href="tour-patriarshie.html" class="details-btn">Узнать детали</a>
+                </div>
+            </div>
+
+            <div class="tour-card">
+                <div class="tour-image-box">
+                    <img src="C:\Users\makko\Documents\project Souztur ver2\290941681e0d11f18411aebc09d15112.jpg" alt="Москва-Сити">
+                    <div class="tour-price">от 4 200 ₽</div>
+                </div>
+                <div class="tour-content">
+                    <h3>Москва будущего</h3>
+                    <p>Головокружительные виды с небоскребов Сити. Узнайте всё о сердце деловой столицы с высоты птичьего полета.</p>
+                    <a href="tour-city.html" class="details-btn">Узнать детали</a>
+                </div>
+            </div>
+
+            <div class="tour-card">
+                <div class="tour-image-box">
+                    <img src="C:\Users\makko\Documents\project Souztur ver2\4e0c70191e0d11f18aca566a744f34c9.jpg" alt="Гастро">
+                    <div class="tour-price">от 5 000 ₽</div>
+                </div>
+                <div class="tour-content">
+                    <h3>Вкус Столицы</h3>
+                    <p>Путешествие по лучшим ресторанам и рынкам. Откройте Москву через высокую кухню и секретные гастро-локации.</p>
+                    <a href="tour-gastro.html" class="details-btn">Узнать детали</a>
+                </div>
+            </div>
+
+            <div class="tour-card">
+                <div class="tour-image-box">
+                    <img src="C:\Users\makko\Documents\project Souztur ver2\76c094ce1e0d11f1956ababf8951fe12.jpg" alt="ВДНХ">
+                    <div class="tour-price">от 2 500 ₽</div>
+                </div>
+                <div class="tour-content">
+                    <h3>Наследие ВДНХ</h3>
+                    <p>Имперский масштаб и архитектурные шедевры. История достижений в самом красивом выставочном комплексе мира.</p>
+                    <a href="tour-vdnh.html" class="details-btn">Узнать детали</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer-minimal">
+        <div class="footer-container">
+            <a href="tel:+74955320288" class="footer-link">📞 +7 (495) 532-02-88</a>
+            <a href="mailto:chankaev2014@gmail.com" class="footer-link">✉️ chankaev2014@gmail.com</a>
+        </div>
+    </footer>
+    <div class="copyright">© 2024 СОЮЗТУР СЕРВИС - Надёжные маршруты для ваших путешествий</div>
+    <div class="image-source">
+        Источник фото: <a href="https://www.freepik.com" target="_blank">Freepik</a>
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+
+

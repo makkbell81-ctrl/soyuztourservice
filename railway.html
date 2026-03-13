@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ЖД билеты — Союзтур Сервис</title>
+    <link href="https://fonts.googleapis.com" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #c70e13;
+            --rose-gold: #e5b3a3;
+            --rose-gold-light: #f5d6cb;
+            --bg-glass: rgba(255, 255, 255, 0.12);
+            --border-glass: rgba(255, 255, 255, 0.25);
+            --info-blue: #a3cbe5;
+        }
+
+        html, body {
+            margin: 0; padding: 0; min-height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            /* Фоновое изображение (замените на ваше из Шедеврума) */
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('672728ca1ee511f19002fe0237c3f1f9.jpg') 
+                        no-repeat center center fixed;
+            background-size: cover;
+            color: white; display: flex; flex-direction: column;
+        }
+
+        /* ШАПКА (Идентична главной) */
+        .header-top {
+            background: rgba(245, 214, 203, 0.94);
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            padding: 12px 4%; display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 1000;
+            border-bottom: 2px solid #d49a89;
+            box-shadow: 0 4px 30px rgba(229, 179, 163, 0.3);
+        }
+
+        .logo-section { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo { width: 65px; height: auto; }
+        .brand-info h1 { margin: 0; font-size: 16px; color: var(--primary-red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
+        .brand-info p { margin: 0; font-size: 9px; color: #4a342e; font-weight: 700; text-transform: uppercase; }
+
+        .header-right { display: flex; gap: 10px; align-items: center; }
+        .badge-group {
+            display: flex; align-items: center; gap: 12px;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 6px 15px; border-radius: 12px;
+            border: 1px solid rgba(212, 154, 137, 0.4);
+        }
+        .badge-logo-tkp { height: 28px; width: auto; }
+        .badge-logo-gerb { height: 26px; width: auto; }
+        .badge-divider { width: 1px; height: 25px; background: #d49a89; opacity: 0.5; }
+        .gerb-info { display: flex; align-items: center; gap: 6px; }
+        .gerb-info span { font-size: 8px; line-height: 1.1; color: #4a342e; font-weight: 700; text-transform: uppercase; max-width: 90px; text-align: left; }
+
+        .container { max-width: 1000px; margin: 30px auto; padding: 0 15px; flex: 1; }
+        .glass-box { background: var(--bg-glass); backdrop-filter: blur(10px); border: 1px solid var(--border-glass); border-radius: 20px; padding: 30px; box-shadow: 0 8px 32px rgba(0,0,0,0.3); margin-bottom: 25px; }
+
+        .back-link { display: inline-flex; align-items: center; color: var(--rose-gold); text-decoration: none; font-weight: 700; margin-bottom: 20px; transition: 0.3s; font-size: 0.9rem; }
+        .back-link:hover { color: #fff; transform: translateX(-5px); }
+
+        .page-title { color: var(--rose-gold); margin: 0 0 10px 0; font-size: 1.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        .page-subtitle { opacity: 0.9; margin-bottom: 30px; font-weight: 400; line-height: 1.6; border-left: 3px solid var(--primary-red); padding-left: 15px; }
+
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .info-card h3 { color: var(--rose-gold); font-size: 1.1rem; margin-top: 0; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 10px; }
+        .info-card p { font-size: 0.9rem; line-height: 1.5; opacity: 0.85; }
+
+        .destination-list { list-style: none; padding: 0; margin: 0; }
+        .destination-list li { padding: 8px 0; font-size: 0.9rem; border-bottom: 1px dashed rgba(255,255,255,0.1); }
+
+        .contact-section { text-align: center; padding: 25px; background: rgba(199, 14, 19, 0.15); border-radius: 15px; border: 1px solid var(--rose-gold); }
+        .contact-section a { color: #fff; text-decoration: none; font-size: 1.3rem; font-weight: 700; display: block; margin-top: 10px; }
+
+        @media (max-width: 768px) {
+            .header-top { flex-direction: column; padding: 15px 10px; gap: 12px; }
+            .badge-group { width: 95%; justify-content: center; }
+            .page-title { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-top">
+        <a href="index.html" class="logo-section">
+            <img src="logo 110.png" alt="Союзтур" class="logo">
+            <div class="brand-info">
+                <h1>СОЮЗТУР СЕРВИС</h1>
+                <p>Туристическое агентство</p>
+            </div>
+        </a>
+
+        <div class="header-right">
+            <div class="badge-group">
+                <img src="Logo_TKP.png" alt="ТКП" class="badge-logo-tkp">
+                <div class="badge-divider"></div>
+                <div class="gerb-info">
+                    <img src="Min-econom-develop-russia-emblem.png" alt="Герб" class="badge-logo-gerb">
+                    <span>Мы в реестре туроператоров</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <a href="index.html" class="back-link">← Вернуться на главную</a>
+
+        <div class="glass-box">
+            <h1 class="page-title">Железнодорожные билеты</h1>
+            <p class="page-subtitle">Оформление билетов на поезда дальнего следования по России и странам СНГ. Подберем комфортный вариант поездки и поможем выбрать лучшие места в вагоне.</p>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Удобство и выбор</h3>
+                    <p>Мы видим наличие мест в режиме реального времени. Оформляем билеты на скоростные поезда («Сапсан», «Ласточка»), фирменные составы и поезда дальнего следования.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Электронная регистрация</h3>
+                    <p>Для большинства направлений доступна электронная регистрация — вам не нужно ехать на вокзал в кассу, достаточно предъявить паспорт при посадке.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- БЛОК ЛАЙФХАКОВ -->
+        <div class="glass-box" style="border-left: 5px solid var(--info-blue); background: rgba(163, 203, 229, 0.08);">
+            <h3 style="color: var(--info-blue); margin-top: 0; display: flex; align-items: center; gap: 10px;">
+                <svg style="width:24px; fill:var(--info-blue)" viewBox="0 0 24 24"><path d="M11 7h2v2h-2V7zm0 4h2v6h-2v-6zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+                Полезно знать
+            </h3>
+            <div style="font-size: 0.9rem; line-height: 1.6;">
+                <p><strong>🕒 Планируйте заранее:</strong> Продажа билетов на большинство поездов открывается за <strong>90 суток</strong>. Раннее бронирование гарантирует наличие нижних мест и более выгодную стоимость.</p>
+                <p><strong>👶 Поездки с детьми:</strong> Дети до 5 лет путешествуют бесплатно (без предоставления места), а для школьников в учебный период действуют специальные скидки.</p>
+            </div>
+        </div>
+
+        <!-- ПОПУЛЯРНЫЕ НАПРАВЛЕНИЯ -->
+        <div style="margin-bottom: 25px;">
+            <h2 style="color: var(--rose-gold); font-size: 1.4rem; text-align: center; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;">
+                Популярные железнодорожные маршруты
+            </h2>
+            
+            <div class="info-grid">
+                <div class="glass-box">
+                    <h3 style="color: var(--rose-gold); margin-top: 0; font-size: 1.1rem;">🚅 Скоростные поезда</h3>
+                    <ul class="destination-list">
+                        <li>Москва — Санкт-Петербург («Сапсан»)</li>
+                        <li>Москва — Нижний Новгород («Ласточка»)</li>
+                        <li>Санкт-Петербург — Карелия («Ласточка»)</li>
+                        <li>Москва — Владимир / Ковров</li>
+                    </ul>
+                </div>
+                
+                <div class="glass-box">
+                    <h3 style="color: var(--rose-gold); margin-top: 0; font-size: 1.1rem;">🛤️ Дальнее следование</h3>
+                    <ul class="destination-list">
+                        <li>Москва — Сочи / Адлер (Двухэтажные поезда)</li>
+                        <li>Москва — Казань (Фирменные составы)</li>
+                        <li>Москва — Анапа</li>
+                        <li>Москва — Мурманск («Арктика»)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-box contact-section">
+            <p style="margin: 0; opacity: 0.9;">Поможем подобрать билеты и оформить заказ по телефону:</p>
+            <a href="tel:+74955320288">+7 495 532-02-88</a>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Каталог направлений — Союзтур Сервис</title>
+    <link href="https://fonts.googleapis.com" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #c70e13;
+            --rose-gold: #e5b3a3;
+            --rose-gold-light: #f5d6cb;
+            --bg-glass: rgba(255, 255, 255, 0.12);
+            --border-glass: rgba(255, 255, 255, 0.25);
+        }
+
+        html, body {
+            margin: 0; padding: 0; min-height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://img.freepik.com/free-photo/highland-vegetation-modest-summer-unusually-beautiful-colors-blooms-autumn-before-cold-weather-blueberries-bright-red-coniferous-forest-green-orange-buk-mountains-sinie-fantastic-charm_146671-19033.jpg') 
+                        no-repeat center center fixed;
+            background-size: cover; color: white;
+            display: flex; flex-direction: column;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 30px 15px; flex: 1; }
+        
+        /* КНОПКИ НАВИГАЦИИ */
+        .nav-btn { 
+            display: inline-flex; align-items: center; gap: 8px;
+            color: var(--rose-gold); text-decoration: none; 
+            font-weight: 700; font-size: 0.9rem; transition: 0.3s;
+            text-transform: uppercase; letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        .nav-btn:hover { color: #fff; transform: translateX(-5px); }
+        .nav-btn.bottom { margin-top: 40px; margin-bottom: 0; justify-content: center; display: flex; }
+
+        .page-title { 
+            text-align: center; color: var(--rose-gold); 
+            font-size: 2.2rem; margin-bottom: 40px; 
+            text-transform: uppercase; letter-spacing: 2px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        /* СЕТКА КАТАЛОГА */
+        .catalog-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+            gap: 25px; 
+        }
+
+        /* КАРТОЧКА */
+        .city-card {
+            height: 380px; border-radius: 24px; overflow: hidden; position: relative;
+            border: 1px solid var(--border-glass); transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex; flex-direction: column; justify-content: flex-end;
+            padding: 25px; text-decoration: none; color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .city-card:hover { 
+            transform: translateY(-10px); 
+            border-color: rgba(255,255,255,0.6); 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6); 
+        }
+
+        .city-bg { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            z-index: -1; transition: 0.8s; background-size: cover; background-position: center; 
+        }
+        .city-card:hover .city-bg { transform: scale(1.1); }
+        
+        /* Градиент для текста */
+        .city-card::after { 
+            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 75%; 
+            background: linear-gradient(transparent, rgba(0,0,0,0.95)); z-index: -1; 
+        }
+
+        .city-card h2 { margin: 0; font-size: 1.6rem; color: var(--rose-gold); text-transform: uppercase; letter-spacing: 1px; }
+        .city-card p { font-size: 0.9rem; opacity: 0.85; margin: 10px 0; line-height: 1.5; font-weight: 300; }
+        
+        .explore-btn { 
+            font-size: 0.8rem; font-weight: 700; text-transform: uppercase; 
+            letter-spacing: 1px; color: #fff; 
+            background: rgba(199, 14, 19, 0.6);
+            padding: 8px 20px; border-radius: 12px;
+            align-self: flex-start; margin-top: 10px;
+            backdrop-filter: blur(5px); border: 1px solid var(--rose-gold);
+            transition: 0.3s;
+        }
+        .city-card:hover .explore-btn { background: var(--primary-red); border-color: #fff; }
+
+        /* АДАПТИВНОСТЬ ПОД МОБИЛЬНЫЕ */
+        @media (max-width: 768px) {
+            .container { padding: 20px 15px; }
+            .page-title { font-size: 1.6rem; margin-bottom: 25px; }
+            .catalog-grid { grid-template-columns: 1fr; gap: 20px; }
+            .city-card { height: 320px; padding: 20px; }
+            .city-card h2 { font-size: 1.4rem; }
+            .nav-btn { font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Кнопка ВВЕРХУ -->
+    <a href="index.html" class="nav-btn">
+        <svg style="width:18px; fill:currentColor" viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+        На главную
+    </a>
+
+    <h1 class="page-title">Направления путешествий</h1>
+
+    <div class="catalog-grid">
+        <!-- МОСКВА -->
+        <a href="tours.html" class="city-card">
+            <div class="city-bg" style="background-image: url('083953311ef011f1a8a4ba491b3b44de.jpg');"></div>
+            <h2>Москва</h2>
+            <p>Сердце России: Красная площадь, уютные переулки старого города и футуристичные огни Москва-Сити.</p>
+            <span class="explore-btn">Смотреть туры</span>
+        </a>
+
+        <!-- САНКТ-ПЕТЕРБУРГ -->
+        <a href="#" class="city-card">
+            <div class="city-bg" style="background-image: url('ad547d781ef111f1add77644ca336b07.jpg');"></div>
+            <h2>Санкт-Петербург</h2>
+            <p>Город мостов, дворцов и белых ночей. Величественная архитектура и дух истории в каждом переулке.</p>
+            <span class="explore-btn">Смотреть туры</span>
+        </a>
+
+        <!-- КАЗАНЬ -->
+        <a href="#" class="city-card">
+            <div class="city-bg" style="background-image: url('736006de1ef311f193e8bed1f8953139.jpg');"></div>
+            <h2>Казань</h2>
+            <p>Место встречи двух культур, древний Кремль и невероятная татарская кухня. Город с тысячелетней историей.</p>
+            <span class="explore-btn">Смотреть туры</span>
+        </a>
+
+        <!-- СОЧИ -->
+        <a href="#" class="city-card">
+            <div class="city-bg" style="background-image: url('8b4a9dd41ef211f1b4867aa4782521dd.jpg');"></div>
+            <h2>Сочи</h2>
+            <p>Черноморское побережье, заснеженные вершины Красной Поляны и живописные субтропические парки.</p>
+            <span class="explore-btn">Смотреть туры</span>
+        </a>
+
+        <!-- ДАГЕСТАН -->
+        <a href="#" class="city-card">
+            <div class="city-bg" style="background-image: url('b9f5d6c01ef411f18a349a46b3805843.jpg');"></div>
+            <h2>Дагестан</h2>
+            <p>Бирюзовые воды Сулакского каньона, древние крепости Дербента и легендарное гостеприимство гор.</p>
+            <span class="explore-btn">Смотреть туры</span>
+        </a>
+
+        <!-- АЛТАЙ -->
+        <a href="#" class="city-card">
+            <div class="city-bg" style="background-image: url('f91589871ef411f1a974de9f2b50d028.jpg');"></div>
+            <h2>Алтай</h2>
+            <p>Край «золотых гор» и чистейших озер. Место для тех, кто ищет истинную силу природы и уединение.</p>
+            <span class="explore-btn">Смотреть туры</span>
+        </a>
+
+        <!-- КАРЕЛИЯ -->
+        <a href="#" class="city-card">
+            <div class="city-bg" style="background-image: url('56db28221ef511f1bb7a629d8072f898.jpg');"></div>
+            <h2>Карелия</h2>
+            <p>Мраморные каньоны, бескрайние леса и зеркальная гладь Ладоги. Идеально для полной перезагрузки.</p>
+            <span class="explore-btn">Смотреть туры</span>
+        </a>
+    </div>
+
+    <!-- Кнопка ВНИЗУ -->
+    <a href="index.html" class="nav-btn bottom">
+        <svg style="width:18px; fill:currentColor; margin-right:8px" viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+        Вернуться на главную
+    </a>
+</div>
+
+<footer style="padding: 20px; text-align: center; font-size: 0.75rem; opacity: 0.6; letter-spacing: 1px;">
+    © 2026 СОЮЗТУР СЕРВИС
+</footer>
+
+</body>
+</html>
+
